@@ -16,4 +16,10 @@ if [[ ! -f "$marker" ]]; then
   touch "$marker"
 fi
 
+# World archives can contain stale lock files and read-only ownership metadata.
+# The Minecraft image runs the game as its default uid/gid 1000.
+rm -f /data/Johto/session.lock /data/Johto/DIM-1/session.lock /data/Johto/DIM1/session.lock
+chown -R 1000:1000 /data/Johto /data/server.properties "$marker"
+chmod -R u+rwX /data/Johto
+
 exec /start

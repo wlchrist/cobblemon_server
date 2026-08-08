@@ -15,4 +15,3 @@ ENV EULA=TRUE \
     ENABLE_WHITELIST=false
 
 EXPOSE 25565/tcp
-VOLUME ["/data"]
